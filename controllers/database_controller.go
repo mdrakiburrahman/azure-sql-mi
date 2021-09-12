@@ -56,7 +56,17 @@ func (a AnnotationPatch) Type() types.PatchType {
 }
 
 func (a AnnotationPatch) Data(obj client.Object) ([]byte, error) {
+
 	annotations := obj.GetAnnotations()
+
+	a.Logger.Info("The DatabaseID is:", "a.DatabaseID", a.DatabaseID)
+
+	// Print all annotations
+	for key, value := range annotations {
+		a.Logger.Info("Existing annotations:", key, value)
+	}
+
+	// This errors if we don't have some annotations already created with the CRD
 	annotations["mssql/db_id"] = a.DatabaseID
 	a.Logger.Info("value of annotations", "mssql/db_id", annotations["mssql/db_id"])
 

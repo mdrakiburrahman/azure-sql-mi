@@ -2,14 +2,15 @@ apiVersion: actions.msft.isd.coe.io/v1alpha1
 kind: Database
 metadata:
   name: database-rbc1
+  annotations:
+    creator: raki
 spec:
-  # Add fields here
-  name: MyDatabase1
-  server: 20.65.85.236
+  name: contosoHR
+  server: 13.72.81.14
   port: 1433
   collationName: SQL_Latin1_General_CP1_CS_AS
   sqlManagedInstance: jumpstart-sql
   credentials:
     name: credentials
-    passwordKey: password
-    usernameKey: username
+    passwordKey: ArcPassword123!!
+    usernameKey: arcdemo
